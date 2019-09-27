@@ -1,0 +1,135 @@
+<div class="row no-gutters">
+  <div class="col-md-3 col-lg-2 d-none d-md-block bg-light sidebar pt-3">
+    <nav>
+      <div class="row no-gutters pb-2 align-items-center border-bottom">
+        <div class="col-md-5">
+          <img class="img-fluid" src="../../../assets/images/logo-18.png">
+        </div>
+        <div class="col-md-7">
+          <h5>Business App</h5>
+        </div>
+      </div>
+      <div class="overflow-auto">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">
+              <i class="fas fa-fw fa-home"></i>
+              Home <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/accounts']" routerLinkActive="active">
+              <i class="fas fa-fw fa-university"></i>
+              Accounts
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/payments']" routerLinkActive="active">
+              <i class="fas fa-fw fa-credit-card"></i>
+              Payments
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" routerLinkActive="active">
+              <i class="fas fa-fw fa-chart-area"></i>
+              Statistics
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="collapse" data-target="#collapseItem">
+              <i class="fas fa-fw fa-users"></i>
+              Personnel
+            </a>
+            <ul class="nav collapse pl-3" id="collapseItem">
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/accountants']" routerLinkActive="active">
+                  Accountants
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/managers']" routerLinkActive="active">
+                  Managers
+                </a>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+
+        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Saved reports</span>
+          <a class="d-flex align-items-center text-muted" href="#">
+            <span data-feather="plus-circle"></span>
+          </a>
+        </h6>
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Current month
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Last quarter
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Social engagement
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span data-feather="file-text"></span>
+              Year-end sale
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
+    </nav>
+  </div>
+  <div class="col-md-9 ml-sm-auto col-lg-10">
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark flex-md-nowrap justify-content-between shadow">
+      <div class="navbar-brand col-sm-3 col-md-2 text-white mr-0">Home</div>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+
+          <div class="row justify-content-end">
+            <div class="col-sm-3">
+              <img class="img-fluid rounded-circle" src="../../../assets/images/avatar.png">
+
+
+            </div>
+            <div class="col-sm-5">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                John Doe
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">Sign out</a>
+              </div>
+            </div>
+          </div>
+
+
+
+
+        </li>
+      </ul>
+      <!-- </div> -->
+    </nav>
+
+    <div class="mx-4 mt-4">
+
+      <router-outlet></router-outlet>
+
+    </div>
+
+  </div>

@@ -1,0 +1,46 @@
+<div class="form-group">
+  <input type="text" class="form-control" (keyup)="applyFilter($event.target.value)" placeholder="Filter by account or company name">
+</div>
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+   <!-- Index Column -->
+   <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let i = index"> {{ i }} </td>
+  </ng-container>
+
+  <!-- Bank Account Column -->
+  <ng-container matColumnDef="bank">
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header> Bank Account </th>
+    <td mat-cell *matCellDef="let element"> 
+      {{ element.account }}
+      <br/>
+      <span class="text-muted">{{ element.bank }}</span>
+    </td>
+  </ng-container>
+
+  <!-- Owner Column -->
+  <ng-container matColumnDef="company">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Owner </th>
+      <td mat-cell *matCellDef="let element"> {{ element.company.name }} </td>
+  </ng-container>
+
+  <!-- Availibility Column -->
+  <ng-container matColumnDef="availibility">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Availibility($) </th>
+    <td mat-cell *matCellDef="let element" class="font-weight-bold" [ngClass]="{'text-success': element.availibility >=0}"> {{ element.availibility | number:'1.2-2' }} </td>
+  </ng-container>
+
+   <!-- Date Column -->
+   <ng-container matColumnDef="lastUpdated">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Updated </th>
+      <td mat-cell *matCellDef="let element"> {{ element.lastUpdated | date: 'MMM dd, yyyy' }} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/account-details', row.id]"></tr>
+</table>
+
+<div *ngIf="loading" class="pt-5 d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+    </div>
+</div>

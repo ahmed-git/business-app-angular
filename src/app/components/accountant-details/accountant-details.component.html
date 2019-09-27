@@ -1,0 +1,85 @@
+<div *ngIf="showComponent" class="container-fluid">
+    <div class="card-header">
+        <div class="d-flex align-items-center">
+            <button type="button" class="close text-primary mr-5" aria-label="Close" (click)="cancel()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4>{{ accountant.firstName }} {{ accountant.lastName }}</h4>
+        </div>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="col form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control bg-light" formControlName="firstName" placeholder="First name"
+                        [ngClass]="{'is-invalid': form.controls.firstName.errors && (submitted || form.controls.firstName.touched)}"/>
+                    <div *ngIf="form.hasError('required','firstName')" class="invalid-feedback">
+                        Firstname is required.
+                    </div>
+                </div>
+                <div class="col form-group">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control bg-light" formControlName="lastName" placeholder="Last name"
+                        [ngClass]="{'is-invalid': form.controls.lastName.errors && (submitted || form.controls.lastName.touched)}"/>
+                    <div *ngIf="form.hasError('required','lastName')" class="invalid-feedback">
+                        Lastname is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Status</label>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio1" class="custom-control-input" formControlName="active" [value]="true">
+                    <label class="custom-control-label" for="customRadio1">Active</label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="customRadio2" class="custom-control-input" formControlName="active" [value]="false">
+                    <label class="custom-control-label" for="customRadio2">Inactive</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Phone</label>
+                <div class="form-row">
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control bg-light" value="+216">
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control bg-light" formControlName="phone" placeholder="Phone"
+                            [ngClass]="{'is-invalid': form.controls.phone.errors && (submitted || form.controls.phone.touched)}"/>
+                        <div *ngIf="form.hasError('required','phone')" class="invalid-feedback">
+                            Phone is required.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control bg-light" formControlName="email" placeholder="Email"
+                    [ngClass]="{'is-invalid': form.controls.email.errors && (submitted || form.controls.email.touched)}" />
+                <div *ngIf="form.hasError('required','email')" class="invalid-feedback">
+                    Email is required.
+                </div>
+                <div *ngIf="form.hasError('email','email')" class="invalid-feedback">
+                    Email is invalid.
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Company</label>
+                <select [compareWith]="compareCompany" class="custom-select bg-light" formControlName="company">
+                    <option *ngFor="let company of companies | async" [ngValue]="company">{{ company.name }}</option>
+                </select>
+            </div>
+
+
+        </form>
+
+    </div>
+
+    <div class="card-footer border-0">
+        <button class="btn btn-primary" (click)="save()">Save</button>
+        <button class="btn btn-light text-primary" (click)="cancel()">Cancel</button>
+    </div>
+
+</div>

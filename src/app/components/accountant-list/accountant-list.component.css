@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+}
+
+.avatar{
+    background-color: rgb(242, 242, 242);
+    border-radius: 50%; 
+    height: 2rem; 
+    width: 2rem;
+    text-align: center;
+} 
+
+.initials {
+    position: relative;
+    top: 20%;
+    vertical-align: baseline;
+    font-family: "Courier New", monospace;
+    font-weight: bold;
+}
+
+.highlight {
+    background-color: lightblue;
+}

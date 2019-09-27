@@ -1,0 +1,70 @@
+<div class="container px-5">
+    <!-- Account Container -->
+    <div *ngIf="account" class="container py-2">
+        <div class="row border-bottom border-gray">
+            <div class="col-sm-4 text-center">
+                <img [src]="account?.logoSource" class="img-fluid">
+            </div>
+            <div class="col-sm-8">
+
+                <div class="row flex-nowrap text-muted">
+                    <div class="col-sm-2 text-center">
+                        <i class="icon fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="col-sm-10 px-0">
+                        <div class="d-flex flex-column w-100 lh-125 border-bottom border-gray">
+                            <span class="text-gray-dark">Availibility</span>
+                            <h3 class="text-dark">{{ account.availibility | number:'1.2-2' }}</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row flex-nowrap text-muted">
+                    <div class="col-sm-2 text-center">
+                        <i class="icon fas fa-university"></i>
+                    </div>
+                    <div class="col-sm-10 px-0">
+                        <div class="d-flex flex-column w-100 lh-125 py-2 border-bottom border-gray">
+                            <span class="text-gray-dark">{{ account.bank }}</span>
+                            <span class="text-dark">{{ account.account }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row flex-nowrap text-muted">
+                    <div class="col-sm-2 text-center">
+                        <i class="icon fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="col-sm-10 px-0">
+                        <div class="d-flex flex-column w-100 lh-125 pt-2">
+                            <span class="text-gray-dark">Updated</span>
+                            <span class="text-dark">{{ account.lastUpdated | date:'MMM dd, yyyy'}}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Recent Transactions Container -->
+        <div class="container py-2">
+            <h4>Recent Transactions</h4>
+            <div *ngFor="let transaction of transactions; let last = last" class="row align-items-center flex-nowrap">
+                <div class="col-sm-1">
+                    <img [src]="transaction?.logoSource" class="img-fluid">
+                </div>
+                <div class="col-sm-11 d-flex px-0" [ngClass]="{'border-bottom border-gray' : !last}">
+                    <div class="d-flex flex-column w-100 lh-125 pt-2">
+                        <span class="text-gray-dark">{{ transaction.company }}</span>
+                        <span class="text-dark">{{ transaction.date | date:'MMM dd, yyyy' }}</span>
+                    </div>
+                    <span class="text-center font-weight-bold my-auto" [ngClass]="(transaction.amount >= 0) ? 'text-success' : 'text-danger'">
+                        {{ transaction.amount | number:'1.2-2' }}
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
