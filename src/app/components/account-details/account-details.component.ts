@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AccountService } from 'src/app/services/account.service';
 import { TransactionService } from 'src/app/services/transaction.service';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-account-details',
@@ -13,13 +12,12 @@ export class AccountDetailsComponent implements OnInit {
 
   account: any;
   transactions: any[];
-  logoSource;
+  logoSource: string;
 
   constructor(
     private route: ActivatedRoute, 
     private accountService: AccountService,
-    private transactionService: TransactionService,
-    private titleService: Title
+    private transactionService: TransactionService
     ) { }
 
   ngOnInit() {
@@ -35,8 +33,6 @@ export class AccountDetailsComponent implements OnInit {
         this.transactions = data;
       }
     );
-
-    this.titleService.setTitle("Account Details");
   }
   
   // Generate random logo for Company

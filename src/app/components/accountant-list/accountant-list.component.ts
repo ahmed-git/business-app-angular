@@ -1,6 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { AccountantService } from 'src/app/services/accountant.service';import { Title } from '@angular/platform-browser';
+import { AccountantService } from 'src/app/services/accountant.service';
 ;
 
 @Component({
@@ -14,9 +14,8 @@ export class AccountantListComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   loading: boolean;
   showForm: boolean;
-  selectedRow: any;
 
-  constructor(private accountantService: AccountantService, private titleService: Title) { 
+  constructor(private accountantService: AccountantService) { 
     this.displayedColumns = ["index", "name", "active", "invoices", "companies", "lastModified"];
     this.dataSource = new MatTableDataSource();
     this.loading = true;
@@ -24,7 +23,6 @@ export class AccountantListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.titleService.setTitle("Accountants");
 
     this.accountantService.getAll().subscribe(data => {
       this.dataSource.data = data;

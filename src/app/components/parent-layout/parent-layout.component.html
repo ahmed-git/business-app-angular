@@ -3,7 +3,7 @@
     <nav>
       <div class="row no-gutters pb-2 align-items-center border-bottom">
         <div class="col-md-5">
-          <img class="img-fluid" src="../../../assets/images/logo-18.png">
+          <img class="img-fluid" src="../../../assets/images/logo-6.png">
         </div>
         <div class="col-md-7">
           <h5>Business App</h5>
@@ -30,7 +30,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" routerLinkActive="active">
+            <a class="nav-link" href="#" [routerLink]="['/statistics']" routerLinkActive="active">
               <i class="fas fa-fw fa-chart-area"></i>
               Statistics
             </a>
@@ -40,7 +40,7 @@
               <i class="fas fa-fw fa-users"></i>
               Personnel
             </a>
-            <ul class="nav collapse pl-3" id="collapseItem">
+            <ul class="nav collapse show pl-3" id="collapseItem">
               <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/accountants']" routerLinkActive="active">
                   Accountants
@@ -96,7 +96,10 @@
   <div class="col-md-9 ml-sm-auto col-lg-10">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark flex-md-nowrap justify-content-between shadow">
-      <div class="navbar-brand col-sm-3 col-md-2 text-white mr-0">Home</div>
+      <div class="navbar-brand col-sm-3 col-md-2 text-white mr-0">
+        <button class="text-primary btn btn-link" (click)="goBack()"><i class="fas fa-arrow-left"></i></button>
+        {{ navTitle }}
+      </div>
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
 
@@ -117,13 +120,8 @@
               </div>
             </div>
           </div>
-
-
-
-
         </li>
       </ul>
-      <!-- </div> -->
     </nav>
 
     <div class="mx-4 mt-4">

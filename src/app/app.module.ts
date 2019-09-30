@@ -3,6 +3,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 
@@ -19,6 +20,7 @@ import { PaymentListComponent } from './components/payment-list/payment-list.com
 import { PaymentDetailsComponent } from './components/payment-details/payment-details.component';
 import { ManagerDetailsComponent } from './components/manager-details/manager-details.component';
 import { AccountantDetailsComponent } from './components/accountant-details/accountant-details.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +34,14 @@ import { AccountantDetailsComponent } from './components/accountant-details/acco
     PaymentListComponent,
     PaymentDetailsComponent,
     ManagerDetailsComponent,
-    AccountantDetailsComponent
+    AccountantDetailsComponent,
+    StatisticsComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    NgxChartsModule,
     MatTableModule,
     MatSortModule,
     HttpClientModule,

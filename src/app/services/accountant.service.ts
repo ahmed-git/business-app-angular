@@ -18,6 +18,10 @@ export class AccountantService {
     return this.http.get<any>(this.link + "/all");
   }
 
+  getAccountant(id: number) {
+    return this.http.get<any>(this.link + "/" + id);
+  }
+
   save(accountant: any) {
     return this.http.post<any>(this.link + "/update", accountant, this.httpOptions)
   }

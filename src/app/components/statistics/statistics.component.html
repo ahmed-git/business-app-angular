@@ -1,0 +1,24 @@
+<div class="container">
+    <div *ngIf="loadingPaymentsChart || loadingAccountsChart; else elseBolck" class="pt-5 d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+        </div>
+    </div>
+
+    <ng-template #elseBolck>
+        <h3>Payments</h3>
+        <div class="row border-bottom">
+            <ngx-charts-pie-grid [view]="view" [scheme]="colorScheme" [results]="dataPaymentsChart" [animations]="true">
+
+            </ngx-charts-pie-grid>
+        </div>
+        <h3 class="mt-2">Transactions</h3>
+        <div class="row">
+            <ngx-charts-bar-vertical [view]="[800,500]" [scheme]="colorScheme" [results]="dataAccountsChart"
+           [xAxis]="true" [yAxis]="true" [showXAxisLabel]="true"  [showYAxisLabel]="true"
+           [xAxisLabel]="'Company'" [yAxisLabel]="'Availibility ($)'">
+    
+            </ngx-charts-bar-vertical>
+        </div>
+    </ng-template>
+   
+</div>

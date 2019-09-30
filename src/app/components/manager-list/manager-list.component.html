@@ -47,8 +47,7 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedRow = row"
-    [class.highlight]="selectedRow == row"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/manager-details',row.id]"></tr>
 </table>
 
 <div *ngIf="loading" class="pt-5 d-flex justify-content-center">

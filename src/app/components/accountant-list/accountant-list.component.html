@@ -55,8 +55,7 @@
                         </ng-container>
 
                         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedRow = row; detailsComponent.open(selectedRow);"
-                                [class.highlight]="selectedRow == row"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/accountant-details', row.id]"></tr>
                 </table>
                 <div *ngIf="loading" class="pt-5 d-flex justify-content-center">
                         <div class="spinner-border" role="status">
@@ -64,6 +63,5 @@
                 </div>
 
         </div>
-        <!-- Form -->
-        <app-accountant-details #detailsComponent></app-accountant-details>
+        
 </div>

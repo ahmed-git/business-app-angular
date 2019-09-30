@@ -1,19 +1,12 @@
-<div *ngIf="showComponent" class="container-fluid">
-    <div class="card-header">
-        <div class="d-flex align-items-center">
-            <button type="button" class="close text-primary mr-5" aria-label="Close" (click)="cancel()">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <h4>{{ accountant.firstName }} {{ accountant.lastName }}</h4>
-        </div>
-    </div>
-    <div class="card-body">
+<div class="row">
+    <div class="col-sm-8">
         <form [formGroup]="form">
             <div class="row">
                 <div class="col form-group">
                     <label>First Name</label>
-                    <input type="text" class="form-control bg-light" formControlName="firstName" placeholder="First name"
-                        [ngClass]="{'is-invalid': form.controls.firstName.errors && (submitted || form.controls.firstName.touched)}"/>
+                    <input type="text" class="form-control bg-light" formControlName="firstName"
+                        placeholder="First name"
+                        [ngClass]="{'is-invalid': form.controls.firstName.errors && (submitted || form.controls.firstName.touched)}" />
                     <div *ngIf="form.hasError('required','firstName')" class="invalid-feedback">
                         Firstname is required.
                     </div>
@@ -21,7 +14,7 @@
                 <div class="col form-group">
                     <label>Last Name</label>
                     <input type="text" class="form-control bg-light" formControlName="lastName" placeholder="Last name"
-                        [ngClass]="{'is-invalid': form.controls.lastName.errors && (submitted || form.controls.lastName.touched)}"/>
+                        [ngClass]="{'is-invalid': form.controls.lastName.errors && (submitted || form.controls.lastName.touched)}" />
                     <div *ngIf="form.hasError('required','lastName')" class="invalid-feedback">
                         Lastname is required.
                     </div>
@@ -30,11 +23,13 @@
             <div class="form-group">
                 <label>Status</label>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio1" class="custom-control-input" formControlName="active" [value]="true">
+                    <input type="radio" id="customRadio1" class="custom-control-input" formControlName="active"
+                        [value]="true">
                     <label class="custom-control-label" for="customRadio1">Active</label>
                 </div>
                 <div class="custom-control custom-radio">
-                    <input type="radio" id="customRadio2" class="custom-control-input" formControlName="active" [value]="false">
+                    <input type="radio" id="customRadio2" class="custom-control-input" formControlName="active"
+                        [value]="false">
                     <label class="custom-control-label" for="customRadio2">Inactive</label>
                 </div>
             </div>
@@ -47,7 +42,7 @@
                     </div>
                     <div class="col-sm-9">
                         <input type="text" class="form-control bg-light" formControlName="phone" placeholder="Phone"
-                            [ngClass]="{'is-invalid': form.controls.phone.errors && (submitted || form.controls.phone.touched)}"/>
+                            [ngClass]="{'is-invalid': form.controls.phone.errors && (submitted || form.controls.phone.touched)}" />
                         <div *ngIf="form.hasError('required','phone')" class="invalid-feedback">
                             Phone is required.
                         </div>
@@ -75,11 +70,8 @@
 
         </form>
 
-    </div>
-
-    <div class="card-footer border-0">
-        <button class="btn btn-primary" (click)="save()">Save</button>
+        <button class="btn btn-primary mr-2" (click)="save()" [disabled]=!form.dirty>Save</button>
         <button class="btn btn-light text-primary" (click)="cancel()">Cancel</button>
+        
     </div>
-
 </div>

@@ -17,7 +17,7 @@ export class AccountListComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort; 
   
-  constructor(private accountService: AccountService, private titleService: Title) { 
+  constructor(private accountService: AccountService) { 
     this.dataSource = new MatTableDataSource()  ;
     this.displayedColumns = ['index', 'bank', 'company', 'availibility', 'lastUpdated'];
     this.loading = true;
@@ -40,7 +40,6 @@ export class AccountListComponent implements OnInit {
     this.dataSource.filterPredicate = (data, filter) => !filter || data.account.toLowerCase().startsWith(filter.toLowerCase())
     || data.company.name.toLowerCase().startsWith(filter.toLowerCase());
 
-    this.titleService.setTitle("Accounts");
   }
 
   applyFilter(filterValue: string) {

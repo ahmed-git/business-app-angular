@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { TransactionService } from 'src/app/services/transaction.service';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-payment-list',
@@ -15,14 +14,13 @@ export class PaymentListComponent implements OnInit {
   loading: boolean;
   selectedRow: any;
   
-  constructor(private transactionService: TransactionService, private titleService: Title) { 
+  constructor(private transactionService: TransactionService) { 
     this.displayedColumns = ["status", "sender", "receiver", "amount", "date"];
     this.dataSource = new MatTableDataSource();
     this.loading = true;
   }
 
   ngOnInit() {
-    this.titleService.setTitle("Payments");
     this.applyFilter("Pending");
   }
 

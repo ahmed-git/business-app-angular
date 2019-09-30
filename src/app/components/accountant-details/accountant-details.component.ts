@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CompanyService } from 'src/app/services/company.service';
 import { Observable } from 'rxjs';
 import { AccountantService } from 'src/app/services/accountant.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-accountant-details',
@@ -11,7 +12,6 @@ import { AccountantService } from 'src/app/services/accountant.service';
 })
 export class AccountantDetailsComponent implements OnInit {
 
-  showComponent: boolean;
   accountant: any;
   form: FormGroup;
   submitted: boolean;
@@ -19,7 +19,9 @@ export class AccountantDetailsComponent implements OnInit {
 
   constructor(
     private companyService: CompanyService, 
-    private accountantService: AccountantService
+    private accountantService: AccountantService,
+    private route: ActivatedRoute,
+    private router: Router
     ) { 
     this.form = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
@@ -29,7 +31,6 @@ export class AccountantDetailsComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
       company: new FormControl('', [Validators.required])
     });
-    this.showComponent = false;
     this.submitted = false;
 
     
@@ -37,16 +38,12 @@ export class AccountantDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  close() {
-    this.showComponent = false;
-  }
-
-  open(accountant: any) {
-    this.accountant = accountant;console.log(accountant);
-    this.setForm();
-    this.showComponent = true;
+    let id = +this.route.snapshot.paramMap.get('id');
+    this.accountantService.getAccountant(id).subscribe(
+      accountant =>  {
+        this.accountant = accountant;
+        this.setForm();
+      });
   }
 
   save() {
@@ -58,9 +55,8 @@ export class AccountantDetailsComponent implements OnInit {
       this.accountant.email = this.form.controls.email.value;
       this.accountant.company = this.form.controls.company.value;
       
-      this.accountantService.save(this.accountant).subscribe();
+      this.accountantService.save(this.accountant).subscribe(() => this.close());
      
-      this.close();
     }
     this.submitted = true;
   }
@@ -68,6 +64,10 @@ export class AccountantDetailsComponent implements OnInit {
   cancel() {
     this.form.reset();
     this.close();
+  }
+
+  close() {
+    this.router.navigate(['/accountants']);
   }
 
   private setForm() {
