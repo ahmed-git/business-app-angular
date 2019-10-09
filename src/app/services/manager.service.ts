@@ -24,6 +24,6 @@ export class ManagerService {
   }
 
   save(manager: any) {
-    return this.http.post<any>(this.link + "/update", manager, this.httpOptions);
+    return this.http.post<any>(this.link + "/" + manager.id, manager, this.httpOptions);
   }
 }

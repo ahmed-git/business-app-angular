@@ -23,6 +23,6 @@ export class AccountantService {
   }
 
   save(accountant: any) {
-    return this.http.post<any>(this.link + "/update", accountant, this.httpOptions)
+    return this.http.post<any>(this.link + "/" + accountant.id, accountant, this.httpOptions)
   }
 }
